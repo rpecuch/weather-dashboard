@@ -29,12 +29,13 @@
         <div class="card" style="width: 18rem;">
             <div class="card-body">
               <h5 class="card-title">Search For a City:</h5>
-              <form>
+              <form id="form">
                 <div class="form-group">
                   <input type="text" class="form-control" id="city-input">
                 </div>
-                <button type="submit" class="btn btn-primary">Search</button>
+                <button type="submit" class="btn btn-primary" id="submit-btn">Search</button>
               </form>
+              <p id="error-message"></p>
             </div>
         </div>
 
@@ -53,5 +54,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+    <script src="./assets/js/script.js"></script>
   </body>
 </html>
