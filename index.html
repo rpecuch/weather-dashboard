@@ -25,32 +25,37 @@
         </div>
       </div>
 
-    <div class="container-fluid">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-              <h5 class="card-title">Search For a City</h5>
-              <form id="form">
-                <div class="form-group">
-                  <label for="city-input">City Name:</label>
-                  <input type="text" class="form-control" id="city-input" placeholder="Cleveland">
+      <main class="flex-row justify-space-between">
+        <div class="col-12 col-md-4">
+            
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Search For a City</h5>
+                  <form id="form">
+                    <div class="form-group">
+                      <label for="city-input">City Name:</label>
+                      <input type="text" class="form-control" id="city-input" placeholder="Cleveland">
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">Search</button>
+                  </form>
+                  <p id="error-message"></p>
                 </div>
-                <button type="submit" class="btn btn-primary" id="submit-btn">Search</button>
-              </form>
-              <p id="error-message"></p>
             </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5>Recent Searches:</h5>
+                    <ul class="list-group list-group-flush">
+                    </ul>
+                <div>
+            </div>
+
         </div>
 
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5>Recent Searches:</h5>
-                <ul class="list-group list-group-flush">
-                    <!-- <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li> -->
-                </ul>
-            <div>
+        <div class="col-12 col-md-8">
+            <h2>Search Results:</h2>
         </div>
-    </div>
+      </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
