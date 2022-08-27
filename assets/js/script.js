@@ -27,7 +27,11 @@ function getWeatherData(cityInput) {
                     var currentTemp = data.main.temp;
                     var currentWind = data.wind.speed;
                     var currentHumid = data.main.humidity;
-                    displayData(currentTemp, currentWind, currentHumid)
+                    var weatherIcon = data.weather[0].icon
+                    var lat = data.coord.lat;
+                    var lon = data.coord.lon;
+                    getUvIndex(lat,lon);
+                    displayData(currentTemp, currentWind, currentHumid, weatherIcon)
                     //also need uv index
                 })
             }
@@ -37,9 +41,23 @@ function getWeatherData(cityInput) {
         })
 }
 
-function displayData(currentTemp, currentWind, currentHumid) {
+function getUvIndex(lat,lon) {
+    var uvUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid=69f30a43ab68091abf44ef0a8bf5b7d9";
+    fetch(uvUrl)
+        .then(function(response){
+            if(response.ok) {
+                response.json()
+                .then(function(data) {
+                    console.log(data);
+                })
+            }
+        })
+}
+
+function displayData(currentTemp, currentWind, currentHumid, weatherIcon) {
     console.log(currentTemp);
     console.log(currentWind);
     console.log(currentHumid);
+    console.log(weatherIcon);
     //now need to display items
 }

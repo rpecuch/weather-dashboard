@@ -17,45 +17,46 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
   </head>
-  <body>
+  <body class="flex-column min-100-vh">
 
     <div class="jumbotron jumbotron-fluid custom-jumbo">
         <div class="container">
           <h1 class="display-4">Weather Dashboard</h1>
         </div>
+    </div>
+
+    <main class="row justify-content-between">
+      <div class="col-12 col-md-4">
+          <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Search For a City</h5>
+                <form id="form">
+                  <div class="form-group">
+                    <label for="city-input">City Name:</label>
+                    <input type="text" class="form-control" id="city-input" placeholder="Cleveland">
+                  </div>
+                  <button type="submit" class="btn btn-primary" id="submit-btn">Search</button>
+                </form>
+                <p id="error-message"></p>
+              </div>
+          </div>
       </div>
 
-      <main class="flex-row justify-space-between">
-        <div class="col-12 col-md-4">
-            
-            <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Search For a City</h5>
-                  <form id="form">
-                    <div class="form-group">
-                      <label for="city-input">City Name:</label>
-                      <input type="text" class="form-control" id="city-input" placeholder="Cleveland">
-                    </div>
-                    <button type="submit" class="btn btn-primary" id="submit-btn">Search</button>
-                  </form>
-                  <p id="error-message"></p>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <h5>Recent Searches:</h5>
-                    <ul class="list-group list-group-flush">
-                    </ul>
-                <div>
-            </div>
-
-        </div>
-
-        <div class="col-12 col-md-8">
-            <h2>Search Results:</h2>
-        </div>
-      </main>
+      <div class="col-12 col-md-8 flex-column">
+          <h5>Search Results:</h5>
+          <div class="card">
+            <h4>City Name (Date)</h4>
+            <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li>Temp:</li>
+                  <li>Wind:</li>
+                  <li>Humitidy:</li>
+                  <li>UV Index:</li>
+                </ul>
+            <div>
+          </div>
+      </div>
+    </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
