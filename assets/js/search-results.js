@@ -9,57 +9,73 @@ function getSearchP() {
     var query = document.location.search.split("=");
     var cityQuery = query[1];
     console.log(cityQuery);
-    getWeatherData(cityQuery);
+    getCoords(cityQuery);
 }
 
 getSearchP();
 
-function getWeatherData(cityQuery) {
-    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityQuery + "&appid=69f30a43ab68091abf44ef0a8bf5b7d9&units=imperial"
-    fetch(requestUrl)
-        .then(function (response) {
-            if (response.ok) {
-                response.json()
-                .then(function (data) {
-                    console.log(data);
-                    var currentTemp = data.main.temp;
-                    var currentWind = data.wind.speed;
-                    var currentHumid = data.main.humidity;
-                    var weatherIcon = data.weather[0].icon
-                    var lat = data.coord.lat;
-                    var lon = data.coord.lon;
-                    getUvIndex(cityQuery, lat,lon);
-                    displayData(cityQuery, currentTemp, currentWind, currentHumid, weatherIcon);
-                })
-                .catch(function(error) {
-                    console.error(error);
-                })
-            }
-            else {
-                alert("Error: " + response.statusText);
-            }
-        })
-}
-
-function getUvIndex(cityQuery, lat,lon) {
-    var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?q=" + cityQuery + "&appid=69f30a43ab68091abf44ef0a8bf5b7d9&lat=" + lat + "&lon=" + lon;
-    fetch(uvUrl)
-        .then(function(response){
+function getCoords(cityQuery) {
+    var coordsUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityQuery + "&appid=69f30a43ab68091abf44ef0a8bf5b7d9&units=imperial"
+    fetch(coordsUrl)
+        .then(function(response) {
             if(response.ok) {
                 response.json()
                 .then(function(data) {
-                    console.log(data);
-                    var UvIndex = data.value;
-                    displayUv (UvIndex);
-                })
-                .catch(function(error) {
-                    console.error(error);
+                    var lat = data.coord.lat;
+                    var lon = data.coord.lon;
+                    getForecast(lat, lon);
                 })
             }
         })
 }
 
-function displayData(cityQuery, currentTemp, currentWind, currentHumid, weatherIcon) {
+function getForecast(lat, lon, cityQuery) {
+    var requestUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=69f30a43ab68091abf44ef0a8bf5b7d9";
+    fetch(requestUrl)
+        .then(function(response) {
+            if (response.ok) {
+                response.json()
+                .then(function(data) {
+                    console.log(data);
+                    var currentTemp = data.current.temp;
+                    var currentWind = data.current.wind_speed;
+                    var currentHumid = data.current.humidity;
+                    var weatherIcon = data.current.weather[0].icon;
+                    var uvIndex = data.current.uvi;
+                    displayData(cityQuery, currentTemp, currentWind, currentHumid, weatherIcon, uvIndex);
+                })
+            }
+        })
+}
+
+// function getWeatherData(cityQuery) {
+//     var requestUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityQuery + "&appid=69f30a43ab68091abf44ef0a8bf5b7d9&units=imperial"
+//     fetch(requestUrl)
+//         .then(function (response) {
+//             if (response.ok) {
+//                 response.json()
+//                 .then(function (data) {
+//                     console.log(data);
+//                     var currentTemp = data.main.temp;
+//                     var currentWind = data.wind.speed;
+//                     var currentHumid = data.main.humidity;
+//                     var weatherIcon = data.weather[0].icon
+//                     var lat = data.coord.lat;
+//                     var lon = data.coord.lon;
+//                     getUvIndex(cityQuery, lat,lon);
+//                     displayData(cityQuery, currentTemp, currentWind, currentHumid, weatherIcon);
+//                 })
+//                 .catch(function(error) {
+//                     console.error(error);
+//                 })
+//             }
+//             else {
+//                 alert("Error: " + response.statusText);
+//             }
+//         })
+// }
+
+function displayData(cityQuery, currentTemp, currentWind, currentHumid, weatherIcon, uvIndex) {
     console.log(currentTemp);
     console.log(currentWind);
     console.log(currentHumid);
@@ -84,19 +100,20 @@ function displayData(cityQuery, currentTemp, currentWind, currentHumid, weatherI
     windResult.textContent = "Wind: " + currentWind;
     var humidResult = document.createElement("li");
     humidResult.textContent = "Humidity: " + currentHumid;
-    resultsList.append(tempResult, windResult, humidResult);
+    var uvResult = document.createElement("li");
+    uvResult.textContent = "UV Index: " + uvIndex;
+    resultsList.append(tempResult, windResult, humidResult, uvResult);
     //need to add weather icon
     //need to add units
     resultContentEl.append(resultContainer);
 }
 
-//find a way for this to go inside data display function
-function displayUv(UvIndex) {
-    var UvResult = document.createElement("li");
-    UvResult.textContent = "UV Index: " + UvIndex;
-    resultsList.append(UvResult);
+// function displayUv(UvIndex) {
+//     var UvResult = document.createElement("li");
+//     UvResult.textContent = "UV Index: " + UvIndex;
+//     resultsList.append(UvResult);
     //need to color code
-}
+// }
 
 // now get and display 5-day forecast
 // function getForecast() {
