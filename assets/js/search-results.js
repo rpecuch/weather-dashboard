@@ -59,6 +59,7 @@ function getForecast(lat, lon, cityQuery) {
         })
 }
 
+//2 to dos
 function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHumid, weatherIcon, uvIndex) {
     console.log(currentTemp);
     console.log(currentWind);
@@ -87,6 +88,7 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     windResult.textContent = "Wind: " + currentWind + " MPH";
     var humidResult = document.createElement("li");
     humidResult.textContent = "Humidity: " + currentHumid + " %";
+    //this needs to be color coded for favorable, moderate, or severe
     var uvResult = document.createElement("li");
     uvResult.textContent = "UV Index: " + uvIndex;
     resultsList.append(dateEl, iconEl, tempResult, windResult, humidResult, uvResult);
@@ -117,7 +119,6 @@ function displayForecast(dailyForecast) {
     resultContentEl.append(dailyContainer);
 }
 
-//this works but need to clear old data because displaying everything
 function handleSubmitForm(event) {
     event.preventDefault();
     var cityInput = cityInputEl.value.toLowerCase();
@@ -126,12 +127,11 @@ function handleSubmitForm(event) {
     }
     else {
         errorEl.textContent = "";
-        var queryString = "./search-results.html?q=" + cityInput;
+        resultContentEl.innerHTML = "";
         getCoords(cityInput);
     }
 }
 
 searchFormEl.addEventListener("submit", handleSubmitForm);
 
-//save and retrieve data form local storage
-//add form submit handler
+//save and retrieve data from local storage to create search history
