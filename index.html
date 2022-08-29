@@ -25,8 +25,8 @@
         </div>
     </div>
 
-    <main class="row justify-content-between">
-      <div class="col-12 col-md-4">
+    <main class="flex-row align-center justify-center min-100-vh">
+      <div class="col-12 col-md-9 flex-column align-center">
           <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Search For a City</h5>
@@ -35,25 +35,10 @@
                     <label for="city-input">City Name:</label>
                     <input type="text" class="form-control" id="city-input" placeholder="Cleveland">
                   </div>
-                  <button type="submit" class="btn btn-primary" id="submit-btn">Search</button>
+                  <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Search</button>
                 </form>
                 <p id="error-message"></p>
               </div>
-          </div>
-      </div>
-
-      <div class="col-12 col-md-8 flex-column">
-          <h5>Search Results:</h5>
-          <div class="card">
-            <h4 id="city-result">City Name (Date)</h4>
-            <div class="card-body">
-                <ul class="list-group list-group-flush">
-                  <li id="temp-result">Temp:</li>
-                  <li id="wind-result">Wind:</li>
-                  <li id="humid-result">Humitidy:</li>
-                  <li id="uv-result">UV Index:</li>
-                </ul>
-            <div>
           </div>
       </div>
     </main>

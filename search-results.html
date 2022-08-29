@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Title</title>
+</head>
+<body>
+    <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh">
+        <div class="col-12 col-md-3 p-3">
+            <h3>Search for a City:</h3>
+            <form id="form">
+                <div class="form-group">
+                  <label for="city-input">City Name:</label>
+                  <input type="text" class="form-control" id="city-input" placeholder="Cleveland">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" id="submit-btn">Search</button>
+              </form>
+              <p id="error-message"></p>
+
+              <a href="./index.html" class="btn btn-block btn-danger">&larr; Go back.</a>
+        </div>
+
+        <div class="col-12 col-md-9 p-3">
+            <h2>Showing results for <span id="city-result"></span></h2>
+            <div id="result-content"></div>
+          </div>
+    </div>
+
+          <!-- <h4 id="city-result">City Name (Date)</h4>
+                <li id="temp-result">Temp:</li>
+                <li id="wind-result">Wind:</li>
+                <li id="humid-result">Humitidy:</li>
+                <li id="uv-result">UV Index:</li> -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"></script>
+</body>
+</html>
