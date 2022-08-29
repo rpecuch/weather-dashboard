@@ -4,6 +4,7 @@ var errorEl = document.querySelector("#error-message");
 var cityResult = document.querySelector("#city-result");
 var resultContentEl = document.querySelector("#result-content");
 var searchFormEl = document.querySelector("#form");
+var storedData = [];
 
 function getSearchP() {
     var query = document.location.search.split("=");
@@ -48,6 +49,23 @@ function getForecast(lat, lon, cityQuery) {
                     for(var i=1; i<6; i++) {
                         displayForecast(data.daily[i]);
                     }
+
+                    // storedData = JSON.parse(localStorage.getItem("cityname"));
+                    // if (storedData === null) {
+                    //     storedData = [];
+                    //     storedData.push(cityQuery.toUpperCase);
+                    //     localStorage.setItem("cityname", JSON.stringify(storedData));
+                    //     saveSearch(cityQuery);
+                    // }
+                    // else {
+                    //     if(find(city) >0) {
+                    //         storedData.push(cityQuery.toUpperCase);
+                    //         localStorage.setItem("cityname", JSON.stringify(storedData));
+                    //         saveSearch(cityQuery); 
+                    //     }
+                    // }
+                    saveSearch(cityQuery);
+
                 })
                 .catch(function(error) {
                     console.error(error);
@@ -59,15 +77,20 @@ function getForecast(lat, lon, cityQuery) {
         })
 }
 
-//2 to dos
+//1 to do
 function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHumid, weatherIcon, uvIndex) {
     console.log(currentTemp);
     console.log(currentWind);
     console.log(currentHumid);
     console.log(weatherIcon);
-    //capitalize this if you have time
     var cityResult = document.querySelector("#city-result");
-    cityResult.textContent = cityQuery;
+    var cityArray = cityQuery.split("");
+    var capitalLetter = cityArray[0].toUpperCase();
+    cityArray.shift();
+    cityArray.unshift(capitalLetter);
+    console.log(cityArray);
+    var searchResultText = cityArray.join("");
+    cityResult.textContent = searchResultText;
 
     var resultContainer = document.createElement("div");
     resultContainer.classList.add("card", "mb-3", "p-3");
@@ -88,9 +111,20 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     windResult.textContent = "Wind: " + currentWind + " MPH";
     var humidResult = document.createElement("li");
     humidResult.textContent = "Humidity: " + currentHumid + " %";
-    //this needs to be color coded for favorable, moderate, or severe
+    //make this look better
     var uvResult = document.createElement("li");
     uvResult.textContent = "UV Index: " + uvIndex;
+    var uvCondition;
+    if(uvIndex <= 2) {
+        uvCondition = "green";
+    }
+    else if (uvIndex > 7) {
+        uvCondition = "red";
+    }
+    else {
+        uvCondition = "yellow";
+    }
+    uvResult.style.backgroundColor = uvCondition;
     resultsList.append(dateEl, iconEl, tempResult, windResult, humidResult, uvResult);
     resultContentEl.append(resultContainer);
 }
@@ -135,3 +169,15 @@ function handleSubmitForm(event) {
 searchFormEl.addEventListener("submit", handleSubmitForm);
 
 //save and retrieve data from local storage to create search history
+
+function saveSearch(cityQuery) {
+    var historyContainer = document.querySelector("#history-content");
+    var historyList = document.createElement("ul");
+    historyContainer.appendChild(historyList);
+    var historyListEl = document.createElement("li");
+    historyListEl.setAttribute("data-value", cityQuery.toUpperCase());
+    //capitalize this like you did in an above function
+    historyListEl.textContent = cityQuery;
+    historyList.appendChild(historyListEl);
+
+}
