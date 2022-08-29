@@ -76,6 +76,9 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     var dateEl = document.createElement("h3");
     var formatDate = moment.unix(currentDate).format("MMM Do YYYY");
     dateEl.textContent = formatDate;
+    var iconEl = document.createElement("img");
+    var iconLink = "https://openweathermap.org/img/w/" + weatherIcon + ".png";
+    iconEl.setAttribute("src", iconLink);
     var resultsList = document.createElement("ul");
     resultBody.appendChild(resultsList);
     var tempResult = document.createElement("li");
@@ -86,8 +89,7 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     humidResult.textContent = "Humidity: " + currentHumid + " %";
     var uvResult = document.createElement("li");
     uvResult.textContent = "UV Index: " + uvIndex;
-    resultsList.append(dateEl, tempResult, windResult, humidResult, uvResult);
-    //need to add weather icon
+    resultsList.append(dateEl, iconEl, tempResult, windResult, humidResult, uvResult);
     resultContentEl.append(resultContainer);
 }
 
@@ -99,18 +101,19 @@ function displayForecast(dailyForecast) {
     dailyBody.setAttribute("class", "card-body");
     dailyContainer.append(dailyBody);
     var dateEl = document.createElement("h3");
-    //need to format date and link  moment
     dateEl.textContent = moment.unix(dailyForecast.dt).format("MMM Do YYYY");
     var dailyList = document.createElement("ul");
     dailyBody.appendChild(dailyList);
-    //need to add icon
+    var dailyIconEl = document.createElement("img");
+    var dailyIconLink = "https://openweathermap.org/img/w/" + dailyForecast.weather[0].icon + ".png";
+    dailyIconEl.setAttribute("src", dailyIconLink);
     var dailyTemp = document.createElement("li");
     dailyTemp.textContent = "Temp: " + dailyForecast.temp.day + " ℉";
     var dailyWind = document.createElement("li");
     dailyWind.textContent = "Wind: " + dailyForecast.wind_speed + " MPH";
     var dailyHumid = document.createElement("li");
     dailyHumid.textContent = "Humidity: " + dailyForecast.humidity + " %";
-    dailyList.append(dateEl, dailyTemp, dailyWind, dailyHumid);
+    dailyList.append(dateEl, dailyIconEl,dailyTemp, dailyWind, dailyHumid);
     resultContentEl.append(dailyContainer);
 }
 
