@@ -112,7 +112,7 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     }
     uvResult.style.backgroundColor = uvCondition;
     uvResult.style.display = "inline";
-    uvResult.style.padding = "1%";
+    uvResult.style.padding = "3px";
     uvResult.style.borderRadius = "5px 5px 5px 5px";
     resultsList.append(dateEl, iconEl, tempResult, windResult, humidResult, uvResult);
     resultContentEl.append(resultContainer);
