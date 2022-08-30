@@ -135,8 +135,6 @@ function displayForecast(dailyForecast) {
     resultContentEl.append(dailyContainer);
 }
 
-searchFormEl.addEventListener("submit", handleSubmitForm);
-
 //parameter in place to stop from saving twice
 function saveSearch(searchResultText) {
     let currentSearch = [{

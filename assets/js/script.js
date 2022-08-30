@@ -1,7 +1,7 @@
 var cityInputEl = document.querySelector("#city-input");
 var searchFormEl = document.querySelector("#form");
 var errorEl = document.querySelector("#error-message");
-var historyContainer = document.querySelector("#history-content");
+var historyContainer = $(".history-content");
 
 function handleSubmitForm(event) {
     event.preventDefault();
@@ -13,7 +13,6 @@ function handleSubmitForm(event) {
         errorEl.textContent = "";
         var queryString = "./search-results.html?q=" + cityInput;
         location.assign(queryString);
-        // getWeatherData(cityInput);
     }
 }
 
@@ -27,7 +26,7 @@ function retrievePastSearches() {
             var historyListEl = document.createElement("button");
             historyListEl.textContent = storedSearches[i].city;
             historyListEl.setAttribute("class", "history-btn")
-            historyContainer.appendChild(historyListEl);
+            historyContainer.append(historyListEl);
         }
 
     }
@@ -35,12 +34,13 @@ function retrievePastSearches() {
 
 retrievePastSearches();
 
-// function retrieveHistoricalData(event) {
-//     event.preventDefault();
-//     var key = event.target.textContent;
-//     console.log(key);
-//     // var historical = localStorage.getItem(key);
-// }
+function retrieveHistoricalData(event) {
+    event.preventDefault();
+    cityBtnEl = event.target;
+    var historicalInput = cityBtnEl.textContent.toLowerCase();
+    var historicalQueryString = "./search-results.html?q=" + historicalInput;
+    location.assign(historicalQueryString);
+}
 
-// //needs to run when button clicked
-// historyContainer.addEventListener("click", ".history-btn", retrieveHistoricalData);
+
+historyContainer.on("click", ".history-btn", retrieveHistoricalData);
