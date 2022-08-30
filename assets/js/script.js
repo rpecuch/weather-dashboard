@@ -4,6 +4,7 @@ var errorEl = document.querySelector("#error-message");
 var historyContainer = $(".history-content");
 var historyCard = document.querySelector("#history-card")
 
+//redirects to search results page upon submitting form
 function handleSubmitForm(event) {
     event.preventDefault();
     var cityInput = cityInputEl.value.toLowerCase();
@@ -19,6 +20,7 @@ function handleSubmitForm(event) {
 
 searchFormEl.addEventListener("submit", handleSubmitForm);
 
+//retrieves search history from local storage and displays it to the page when page loads
 function retrievePastSearches() {
     let storedSearches = JSON.parse(localStorage.getItem("pastSearches"));
     if(storedSearches !== null) {
@@ -37,6 +39,7 @@ function retrievePastSearches() {
 
 retrievePastSearches();
 
+//redirects to search results when user clicks on city from search history
 function retrieveHistoricalData(event) {
     event.preventDefault();
     cityBtnEl = event.target;

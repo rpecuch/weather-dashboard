@@ -4,6 +4,7 @@ var errorEl = document.querySelector("#error-message");
 var cityResult = document.querySelector("#city-result");
 var resultContentEl = document.querySelector("#result-content");
 
+//generates city search parameter from webpage url
 function getSearchP() {
     var query = document.location.search.split("=");
     var cityQuery = query[1];
@@ -13,6 +14,7 @@ function getSearchP() {
 
 getSearchP();
 
+//api call to retrieve coordinates of city that will be used to make api call for forecast data
 function getCoords(cityQuery) {
     var coordsUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityQuery + "&appid=69f30a43ab68091abf44ef0a8bf5b7d9&units=imperial"
     fetch(coordsUrl)
@@ -28,6 +30,7 @@ function getCoords(cityQuery) {
         })
 }
 
+//api call to retrieve current and future forecast data
 function getForecast(lat, lon, cityQuery) {
     var requestUrl = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=69f30a43ab68091abf44ef0a8bf5b7d9";
     fetch(requestUrl)
@@ -44,6 +47,7 @@ function getForecast(lat, lon, cityQuery) {
                     var uvIndex = data.current.uvi;
                     displayData(cityQuery,currentDate, currentTemp, currentWind, currentHumid, weatherIcon, uvIndex);
 
+                    //function will be ran to generate upcoming forecast
                     for(var i=1; i<6; i++) {
                         displayForecast(data.daily[i]);
                     }
@@ -59,12 +63,14 @@ function getForecast(lat, lon, cityQuery) {
         })
 }
 
+//displays current forecast data to page
 function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHumid, weatherIcon, uvIndex) {
     console.log(currentTemp);
     console.log(currentWind);
     console.log(currentHumid);
     console.log(weatherIcon);
     var cityResult = document.querySelector("#city-result");
+    //converting first letter of city name to a capital letter
     var cityArray = cityQuery.split("");
     var capitalLetter = cityArray[0].toUpperCase();
     cityArray.shift();
@@ -93,6 +99,7 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     humidResult.textContent = "Humidity: " + currentHumid + " %";
     var uvResult = document.createElement("li");
     uvResult.textContent = "UV Index: " + uvIndex;
+    //color coding uv index based on severity
     var uvCondition;
     if(uvIndex <= 2) {
         uvCondition = "green";
@@ -112,6 +119,7 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     saveSearch(searchResultText);
 }
 
+//displays upcoming forecast data for next 5 days
 function displayForecast(dailyForecast) {
     console.log(dailyForecast);
     var dailyContainer = document.createElement("div");
@@ -136,6 +144,8 @@ function displayForecast(dailyForecast) {
     resultContentEl.append(dailyContainer);
 }
 
+//saves data to local storage
+//need to add limitation to prevent same city from being saved more than once
 function saveSearch(searchResultText) {
     let currentSearch = [{
         city: searchResultText
