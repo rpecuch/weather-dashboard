@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="Description" content="Enter your description here" />
-    <!-- linked to Bootstrap, Font Awesome, and custom style sheet -->
+    
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css"
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <main class="flex-row align-center justify-center min-100-vh">
+    <main>
       <div class="col-12 col-md-9 flex-column align-center">
           <div class="card">
               <div class="card-body">
@@ -40,11 +40,12 @@
                 <p id="error-message"></p>
               </div>
           </div>
-
-          <!-- make this more appealing -->
-          <div class="col-12 col-md-3 p-3">
-                <h3>Recent Searches:</h3>
-                <div class="history-content"></div>
+ 
+          <div class="card" id="history-card">
+            <div class="col-12 col-md-9 p-3">
+              <h4>Recent Searches:</h4>
+              <div class="history-content"></div>
+            </div>
           </div>
       </div>
     </main>

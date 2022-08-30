@@ -59,7 +59,6 @@ function getForecast(lat, lon, cityQuery) {
         })
 }
 
-//1 to do
 function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHumid, weatherIcon, uvIndex) {
     console.log(currentTemp);
     console.log(currentWind);
@@ -92,7 +91,6 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     windResult.textContent = "Wind: " + currentWind + " MPH";
     var humidResult = document.createElement("li");
     humidResult.textContent = "Humidity: " + currentHumid + " %";
-    //make this look better
     var uvResult = document.createElement("li");
     uvResult.textContent = "UV Index: " + uvIndex;
     var uvCondition;
@@ -106,6 +104,9 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
         uvCondition = "yellow";
     }
     uvResult.style.backgroundColor = uvCondition;
+    uvResult.style.display = "inline";
+    uvResult.style.padding = "1%";
+    uvResult.style.borderRadius = "5px 5px 5px 5px";
     resultsList.append(dateEl, iconEl, tempResult, windResult, humidResult, uvResult);
     resultContentEl.append(resultContainer);
     saveSearch(searchResultText);
@@ -135,7 +136,6 @@ function displayForecast(dailyForecast) {
     resultContentEl.append(dailyContainer);
 }
 
-//parameter in place to stop from saving twice
 function saveSearch(searchResultText) {
     let currentSearch = [{
         city: searchResultText
@@ -145,7 +145,7 @@ function saveSearch(searchResultText) {
     if(storedSearches !== null) {
         storedSearches.push(currentSearch[0]);
     }
-    else{
+    else {
         storedSearches = currentSearch;
     }
     localStorage.setItem("pastSearches", JSON.stringify(storedSearches));

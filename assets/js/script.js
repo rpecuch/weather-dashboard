@@ -2,6 +2,7 @@ var cityInputEl = document.querySelector("#city-input");
 var searchFormEl = document.querySelector("#form");
 var errorEl = document.querySelector("#error-message");
 var historyContainer = $(".history-content");
+var historyCard = document.querySelector("#history-card")
 
 function handleSubmitForm(event) {
     event.preventDefault();
@@ -18,7 +19,6 @@ function handleSubmitForm(event) {
 
 searchFormEl.addEventListener("submit", handleSubmitForm);
 
-//put parameter in place to prevent same button from displaying twice
 function retrievePastSearches() {
     let storedSearches = JSON.parse(localStorage.getItem("pastSearches"));
     if(storedSearches !== null) {
@@ -29,6 +29,9 @@ function retrievePastSearches() {
             historyContainer.append(historyListEl);
         }
 
+    }
+    else {
+        historyCard.style.display = "none";
     }
 }
 
