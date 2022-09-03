@@ -79,7 +79,7 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
     cityResult.textContent = searchResultText;
 
     var resultContainer = document.createElement("div");
-    resultContainer.classList.add("card", "mb-3", "p-3");
+    resultContainer.classList.add("card", "mb-3", "p-3", "custom-result-card");
     var resultBody = document.createElement("div");
     resultBody.setAttribute("class", "card-body");
     resultContainer.append(resultBody);

@@ -14,6 +14,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
+    <script src="https://kit.fontawesome.com/73525b73cb.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Secular+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <title>Weather Dashboard</title>
   </head>
@@ -21,13 +25,13 @@
 
     <div class="jumbotron jumbotron-fluid custom-jumbo">
         <div class="container">
-          <h1 class="display-4">Weather Dashboard</h1>
+          <h1 class="display-4"><i class="fa-solid fa-cloud"></i>  Weather Dashboard  <i class="fa-solid fa-cloud"></i></h1>
         </div>
     </div>
 
     <main>
-      <div class="col-12 col-md-9 flex-column align-center">
-          <div class="card">
+      <div class="col-12 flex-column align-center justify-content-center">
+          <div class="card custom-card">
               <div class="card-body">
                 <h5 class="card-title">Search For a City</h5>
                 <form id="form">
@@ -35,15 +39,15 @@
                     <label for="city-input">City Name:</label>
                     <input type="text" class="form-control" id="city-input" placeholder="Cleveland">
                   </div>
-                  <button type="submit" class="btn btn-primary btn-block">Search</button>
+                  <button type="submit" class="btn btn-primary">Search</button>
                 </form>
                 <p id="error-message"></p>
               </div>
           </div>
  
           <!-- search history will be displayed here if any from local storage -->
-          <div class="card" id="history-card">
-            <div class="col-12 col-md-9 p-3">
+          <div class="card custom-card" id="history-card">
+            <div class="col-12 p-3">
               <h4>Recent Searches:</h4>
               <div class="history-content"></div>
             </div>

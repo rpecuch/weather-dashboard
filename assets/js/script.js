@@ -25,9 +25,11 @@ function retrievePastSearches() {
     let storedSearches = JSON.parse(localStorage.getItem("pastSearches"));
     if(storedSearches !== null) {
         for(i=0; i<storedSearches.length; i++) {
-            var historyListEl = document.createElement("button");
-            historyListEl.textContent = storedSearches[i].city;
-            historyListEl.setAttribute("class", "history-btn")
+            var historyListEl = document.createElement("li");
+            var historyButton = document.createElement("button");
+            historyButton.textContent = storedSearches[i].city;
+            historyButton.setAttribute("class", "history-btn")
+            historyListEl.append(historyButton);
             historyContainer.append(historyListEl);
         }
 

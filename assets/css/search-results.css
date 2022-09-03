@@ -1,0 +1,15 @@
+body {
+    background-color: #b3e0ff;
+}
+
+.card {
+    border: 2px solid black;
+}
+
+.custom-result-card {
+    border: 5px solid black;
+}
+
+.card:hover {
+    background-color: #ffdab3;
+}
