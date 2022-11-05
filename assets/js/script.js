@@ -35,7 +35,9 @@ function retrievePastSearches() {
 
     }
     else {
-        historyCard.style.display = "none";
+        var noHx = document.createElement('p');
+        noHx.textContent = 'No recent searches!'
+        historyContainer.append(noHx)
     }
 }
 
