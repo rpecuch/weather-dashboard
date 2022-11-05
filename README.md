@@ -1,5 +1,12 @@
 # Weather Dashboard
 
+  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+  ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
+  ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+  ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+  ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
+
 ## Description
 
 The purpose of this project was to utilize a server-side API to retrieve and display the weather forecast when a location is searched for. This is useful for a user to be able to plan their day accordingly and plan upcoming travel accordingly. Over the course of building this project, I became comfortable with creating fetch requests and extracting and manipulating desired data points. 
