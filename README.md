@@ -11,6 +11,16 @@
 
 The purpose of this project was to utilize a server-side API to retrieve and display the weather forecast when a location is searched for. This is useful for a user to be able to plan their day accordingly and plan upcoming travel accordingly. Over the course of building this project, I became comfortable with creating fetch requests and extracting and manipulating desired data points. 
 
+## Table of Contents
+
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Credits](#credits)
+  - [License](#license)
+  - [Contributing](#contributing)
+  - [Tests](#tests)
+  - [Questions](#questions)
+
 ## Installation
 
 N/A
@@ -36,3 +46,15 @@ The following APIs were utilized to build this project: OpenWeather One Call API
 ## License
 
 Please refer to the license in the repo.
+
+  ## Contributing
+
+  Ways to contribute include suggesting bug fixes.
+  
+  ## Tests
+
+  N/A
+
+  ## Questions
+
+  If you have any questions or would like to provide feedback, do not hesitate to view my GitHub profile at [https://github.com/rpecuch](https://github.com/rpecuch) or contact me at rpecuch@comcast.net.
