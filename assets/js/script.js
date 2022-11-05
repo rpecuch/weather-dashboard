@@ -32,6 +32,14 @@ function retrievePastSearches() {
             historyListEl.append(historyButton);
             historyContainer.append(historyListEl);
           }
+          var clearBtn = document.createElement('button');
+          clearBtn.textContent = 'Clear Search History';
+          clearBtn.setAttribute('class', 'btn clear-btn')
+          clearBtn.addEventListener('click', function() {
+            localStorage.clear();
+            location.reload();
+          })
+          historyContainer.append(clearBtn);
     }
     else {
         var noHx = document.createElement('p');

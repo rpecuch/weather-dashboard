@@ -15,12 +15,18 @@ li {
     list-style-type: none;
 }
 
-.submit-btn {
+.submit-btn,
+.clear-btn {
     background: black;
     color: white;
 }
 
-.submit-btn:hover {
+.clear-btn {
+    margin-top: 5%;
+}
+
+.submit-btn:hover,
+.clear-btn:hover {
     background: grey;
     color: white;
 }
