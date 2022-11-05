@@ -2,6 +2,16 @@ body {
     background-color: #b3e0ff;
 }
 
+.back-btn {
+    background: black;
+    color: white;
+}
+
+.back-btn:hover {
+    background: grey;
+    color: white;
+}
+
 .card {
     border: 2px solid black;
 }

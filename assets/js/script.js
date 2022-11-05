@@ -22,17 +22,16 @@ searchFormEl.addEventListener("submit", handleSubmitForm);
 
 //retrieves search history from local storage and displays it to the page when page loads
 function retrievePastSearches() {
-    let storedSearches = JSON.parse(localStorage.getItem("pastSearches"));
-    if(storedSearches !== null) {
-        for(i=0; i<storedSearches.length; i++) {
+    if(localStorage.length > 0) {
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i)
             var historyListEl = document.createElement("li");
             var historyButton = document.createElement("button");
-            historyButton.textContent = storedSearches[i].city;
+            historyButton.textContent = key;
             historyButton.setAttribute("class", "history-btn")
             historyListEl.append(historyButton);
             historyContainer.append(historyListEl);
-        }
-
+          }
     }
     else {
         var noHx = document.createElement('p');

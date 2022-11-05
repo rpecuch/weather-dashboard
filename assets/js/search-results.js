@@ -8,7 +8,6 @@ var resultContentEl = document.querySelector("#result-content");
 function getSearchP() {
     var query = document.location.search.split("=");
     var cityQuery = query[1];
-    console.log(cityQuery);
     getCoords(cityQuery);
 }
 
@@ -38,7 +37,6 @@ function getForecast(lat, lon, cityQuery) {
             if (response.ok) {
                 response.json()
                 .then(function(data) {
-                    console.log(data);
                     var currentDate = data.current.dt;
                     var currentTemp = data.current.temp;
                     var currentWind = data.current.wind_speed;
@@ -65,10 +63,6 @@ function getForecast(lat, lon, cityQuery) {
 
 //displays current forecast data to page
 function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHumid, weatherIcon, uvIndex) {
-    console.log(currentTemp);
-    console.log(currentWind);
-    console.log(currentHumid);
-    console.log(weatherIcon);
     var cityResult = document.querySelector("#city-result");
     //converting first letter of city name to a capital letter
     var cityArray = cityQuery.split("");
@@ -121,7 +115,6 @@ function displayData(cityQuery, currentDate,currentTemp, currentWind, currentHum
 
 //displays upcoming forecast data for next 5 days
 function displayForecast(dailyForecast) {
-    console.log(dailyForecast);
     var dailyContainer = document.createElement("div");
     dailyContainer.classList.add("card", "mb-3", "p-3");
     var dailyBody = document.createElement("div");
@@ -145,18 +138,12 @@ function displayForecast(dailyForecast) {
 }
 
 //saves data to local storage
-//need to add limitation to prevent same city from being saved more than once
 function saveSearch(searchResultText) {
-    let currentSearch = [{
-        city: searchResultText
+    const currentSearch = searchResultText;
+    //check if city already saved
+    const pastSearch = localStorage.getItem(currentSearch)
+    //only save city if not already saved
+    if (pastSearch === null) {
+        localStorage.setItem(currentSearch, currentSearch);
     }
-    ]
-    let storedSearches = JSON.parse(localStorage.getItem("pastSearches"));
-    if(storedSearches !== null) {
-        storedSearches.push(currentSearch[0]);
-    }
-    else {
-        storedSearches = currentSearch;
-    }
-    localStorage.setItem("pastSearches", JSON.stringify(storedSearches));
 }
