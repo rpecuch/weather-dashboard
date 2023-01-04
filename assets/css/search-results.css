@@ -1,7 +1,7 @@
 body {
     background-color: #b3e0ff;
 }
-
+/* btn at top of page to redirect to search form */
 .back-btn {
     background: black;
     color: white;
@@ -12,10 +12,12 @@ body {
     color: white;
 }
 
+/* cards with forecast data */
 .card {
     border: 2px solid black;
 }
 
+/* card for current forecast */
 .custom-result-card {
     border: 5px solid black;
 }
